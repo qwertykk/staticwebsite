@@ -55,7 +55,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API, Storage } from 'aws-amplify';
+import { Amplify } from 'aws-amplify';
 import {
   Button,
   Flex,
@@ -73,6 +73,7 @@ import {
 } from "./graphql/mutations";
 
 const App = ({ signOut }) => {
+  const { API, Storage } = Amplify;
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -179,7 +180,8 @@ const App = ({ signOut }) => {
               Delete note
             </Button>
           </Flex>
-        ))}      </View>
+        ))}
+      </View>
       <Button onClick={signOut}>Sign Out</Button>
     </View>
   );
